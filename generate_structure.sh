@@ -3,7 +3,7 @@
 # This file generates directories and other files 
 # for the  convenience of developers and students.
 
-# NOTE; We're using multiple CDs for easy tracking. 
+# NOTE; We're using multiple CD commands for easy tracking. 
 
 echo "GENERATING FILE CABINET"
 
