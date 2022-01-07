@@ -4,33 +4,52 @@
 # This file generates directories and other files 
 # for the convenience of developers and students.
 
-printf "GENERATING FILE CABINET"
+echo "GENERATING FILE CABINET"
 
-mkdir Desktop
+if [ ! -d Desktop ]; then
+	mkdir Desktop
+fi
 
 # DOCUMENTS
 # Create the Documents directory along with the subdirectories.
-mkdir -p Documents/office/{calc,draw,impress,math,writer}
+if [ ! -d Documents ]; then
+	mkdir -p Documents/office/{calc,draw,impress,math,writer}
+fi
 # Create the programming directory along with the subdirectories.
-mkdir -p programming/{assembly,c,cpp,d,forth,go,haskell,ruby,rust}
+if [ ! -d programming ]; then
+	mkdir -p programming/{assembly,c,cpp,d,forth,go,haskell,ruby,rust}
+fi
 # Create the scripting directory along with the subdirectories.
-mkdir -p scripting/{lua,python,shell/{bash,dash,fish,zsh}}
+if [ ! -d scripting ]; then
+	mkdir -p scripting/{lua,python,shell/{bash,dash,fish,zsh}}
+fi
 # Create the web directory along with the subdirectories.
+if [ ! -d web ]; then
 mkdir -p web/html/{css,html,javascript,media/{audio/{flac,mp3,ogg},photo/{gif,jpeg,png,svg},video/{mp4,ogv,webm}},php}
+fi
 
 # DOWNLOADS
-mkdir -p Downloads/{7zip,iso,other,tarball,zip}
+if [ ! -d Downloads ]; then
+	mkdir -p Downloads/{7zip,iso,other,tarball,zip}
+fi
 
 # MUSIC
 # You will need to create directories for each band or artist yourself. We don't know who you listen to or what file format you may download as.  
-mkdir -p Music/{aup,flac,mp3,ogg}
+if [ ! -d Music ]; then
+	mkdir -p Music/{aup,flac,mp3,ogg}
+fi
 
 # PICTURES
-mkdir -p Pictures/{gif,jpeg,png/screenshot,svg,wallpapers,xcf}
+if [ ! -d Pictures ]; then
+	mkdir -p Pictures/{gif,jpeg,png/screenshot,svg,wallpapers,xcf}
+fi
 
 # TEMPLATES
-mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
-printf "WRITING TEMPLATES"
+if [ ! -d Templates ]; then
+	mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
+fi
+
+printf "WRITING TEMPLATES\n"
 
 printf "GENERATING ADA TEMPLATE\n"
 printf "Text_IO;\n\n\
