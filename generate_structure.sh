@@ -3,7 +3,7 @@
 # This file generates directories and other files 
 # for the convenience of developers and students.
 
-echo "GENERATING FILE CABINET"
+printf "GENERATING FILE CABINET"
 
 mkdir Desktop
 
@@ -29,7 +29,7 @@ mkdir -p Pictures/{gif,jpeg,png/screenshot,svg,wallpapers,xcf}
 
 # TEMPLATES
 mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
-echo "WRITING TEMPLATES"
+printf "WRITING TEMPLATES"
 
 printf "GENERATING ADA TEMPLATE\n"
 printf "Text_IO;\n\n\
