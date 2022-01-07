@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # SETUP
 # AUTHOR: Dalton "Joey" Hill
 # This file generates directories and other files 
