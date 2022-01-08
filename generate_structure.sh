@@ -53,10 +53,10 @@ printf "WRITING TEMPLATES\n"
 
 printf "GENERATING ADA TEMPLATE\n"
 printf "Text_IO;\n\n\
-	procedure Hello_World is\n\
-	begin\n\
-		Ada.Text_IO.Put_Line ('Hello, World!');\n\
-	end Hello_World;\n" > Templates/PROGRAMMING/A/ada.adb
+procedure Hello_World is\n\
+begin\n\
+	Ada.Text_IO.Put_Line ('Hello, World!');\n\
+end Hello_World;\n" > Templates/PROGRAMMING/A/ada.adb
 
 printf "GENERATING APL TEMPLATE\n"
 printf "[]<-'Hello World!'\n" > Templates/PROGRAMMING/A/apl.apl
