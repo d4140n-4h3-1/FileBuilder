@@ -46,7 +46,7 @@ fi
 
 # TEMPLATES
 if [ ! -d Templates ]; then
-	mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
+	mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,B,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
 fi
 
 printf "WRITING TEMPLATES\n"
@@ -77,6 +77,10 @@ _start:
 section .rodata\n\
 	msg: db 'Hello, World!', 10\n\
 	msglen: equ $ - msg" > Templates/PROGRAMMING/A/assembly-n.asm
+	
+printf "GENERATING BASIC TEMPLATE\n"
+printf "10 REM Hello World in BASIC
+20 PRINT "Hello World"" > Templates/PROGRAMMING/B/basic.bas
 
 printf "GENERATING C TEMPLATE\n"
 printf "#include <stdio.h>\n\n\
@@ -135,6 +139,12 @@ printf "class HelloWorld {\n\
 
 printf "GENERATING OCAML TEMPLATE\n"
 printf "print_string \"Hello World\n\"" > Templates/PROGRAMMING/O/oca.ml
+
+printf "GENERATING PASCAL TEMPLATE\n"
+printf "program Hello;
+begin
+	writeIn ('Hello, World!');
+end" > Templates/PROGRAMMING/P/pascal.p
 
 printf "GENERATING PROLOG TEMPLATE\n"
 printf "write(\"Hello, World!\")." > Templates/PROGRAMMING/P/prolog.pro
