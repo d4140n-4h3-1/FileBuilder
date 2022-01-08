@@ -63,75 +63,75 @@ printf "[]<-'Hello World!'\n" > Templates/PROGRAMMING/A/apl.apl
 
 printf "GENERATING ASSEMBLY TEMPLATE FOR NASM\n"
 printf "global _start\n\n\
-	section .text
-	_start:
-		mov rax, 1	; write(\n\
-		mov rdi, 1	;   STDOUT_FILENO,\n\
-		mov rsi, msg	;   'Hello, World!\n',\n\
-		mov rdx, msglen	;   sizeof('Hello, World!\n')\n\
-		syscall		; );\n\n\
-		mov rax, 60	; exit(\n\
-		mov rdi, 0	;   EXIT_SUCCESS\n\
-		syscall		; );\n\n\
-		syscall		; );\n\
-	section .rodata\n\
-		msg: db 'Hello, World!', 10\n\
-		msglen: equ $ - msg" > Templates/PROGRAMMING/A/assembly-n.asm
+section .text
+_start:
+	mov rax, 1	; write(\n\
+	mov rdi, 1	;   STDOUT_FILENO,\n\
+	mov rsi, msg	;   'Hello, World!\n',\n\
+	mov rdx, msglen	;   sizeof('Hello, World!\n')\n\
+	syscall		; );\n\n\
+	mov rax, 60	; exit(\n\
+	mov rdi, 0	;   EXIT_SUCCESS\n\
+	syscall		; );\n\n\
+	syscall		; );\n\
+section .rodata\n\
+	msg: db 'Hello, World!', 10\n\
+	msglen: equ $ - msg" > Templates/PROGRAMMING/A/assembly-n.asm
 
 printf "GENERATING C TEMPLATE\n"
 printf "#include <stdio.h>\n\n\
-	int main() {\n\
-		printf(\"Hello World!\");\n\
-		return 0;\n\
-	}" > Templates/PROGRAMMING/C/c.c
+int main() {\n\
+	printf(\"Hello World!\");\n\
+	return 0;\n\
+}" > Templates/PROGRAMMING/C/c.c
 
 printf "GENERATING C++ FILE\n"
 printf "#include <iostream>\n\n\
-	int main() {\n\
-		std::cout << \"Hello, World!\" << std::endl;\n\
-		return 0;\n\
-	}" > Templates/PROGRAMMING/C/cpp.cpp
+int main() {\n\
+	std::cout << \"Hello, World!\" << std::endl;\n\
+	return 0;\n\
+}" > Templates/PROGRAMMING/C/cpp.cpp
 
 printf "GENERATING COBOL TEMPLATE\n"
 printf "IDENTIFICATION DIVISION.\n\
-	PROGRAM-ID. IDSAMPLE.\n\
-	ENVIRONMENT DIVISION.\n\
-	PROCEDURE DIVISION.\n\
-		DISPLAY \"HELLO WORLD\".\n\
-		STOP RUN." > Templates/PROGRAMMING/C/cobol.cbl
+PROGRAM-ID. IDSAMPLE.\n\
+ENVIRONMENT DIVISION.\n\
+PROCEDURE DIVISION.\n\
+	DISPLAY \"HELLO WORLD\".\n\
+	STOP RUN." > Templates/PROGRAMMING/C/cobol.cbl
 
 printf "GENERATING D TEMPLATE\n"
 printf "import std.stdio;\n\n\
-	void main() {\n\
-		writefln(\"Hello, World!\");\n\
-	}" > Templates/PROGRAMMING/D/d.d
+void main() {\n\
+	writefln(\"Hello, World!\");\n\
+}" > Templates/PROGRAMMING/D/d.d
 
-printf "GENERATING FORTH TEMPLATE\m"
+printf "GENERATING FORTH TEMPLATE\n"
 printf " : HELLO  ( -- )  CR .\" Hello, World!\" ;\n" > Templates/PROGRAMMING/F/forth.fth
 
 printf "GENERATING F# TEMPLATE\n"
 printf "[<EntryPoint>]\n\
-	let main argv =\n\
-		printfn \"Hello, World!\"\n\
-		0" > Templates/PROGRAMMING/F/fsharp.fs
+let main argv =\n\
+	printfn \"Hello, World!\"\n\
+	0" > Templates/PROGRAMMING/F/fsharp.fs
 
 printf "GENERATING GO TEMPLATE\n"
 printf "package main\n\n\
-	import 'fmt'\n\n\
-	func main() {\n\
-		fmt.Println(\"Hello, World!\")\n\
-	}" > Templates/PROGRAMMING/G/golang.go
+import 'fmt'\n\n\
+func main() {\n\
+	fmt.Println(\"Hello, World!\")\n\
+}" > Templates/PROGRAMMING/G/golang.go
 
 printf "GENERATING HASKELL TEMPLATE\n"
 printf "main :: IO ()\n\
-	main = putStrLn \"Hello, World!\"" > Templates/PROGRAMMING/H/haskell.hs
+main = putStrLn \"Hello, World!\"" > Templates/PROGRAMMING/H/haskell.hs
 
 printf "GENERATING JAVA TEMPLATE\n"
 printf "class HelloWorld {\n\
-		public static void main(String[] args) {\n\
-			System.out.println(\"Hello, World!\");\n\
-		}\n\
-	}" > Templates/PROGRAMMING/J/java.jar
+	public static void main(String[] args) {\n\
+		System.out.println(\"Hello, World!\");\n\
+	}\n\
+}" > Templates/PROGRAMMING/J/java.jar
 
 printf "GENERATING OCAML TEMPLATE\n"
 printf "print_string \"Hello World\n\"" > Templates/PROGRAMMING/O/oca.ml
@@ -147,8 +147,8 @@ printf "puts \"Hello, World!\"" > Templates/PROGRAMMING/R/ruby.rb
 
 printf "GENERATING RUST TEMPLATE\n"
 printf "fn main() {\n\
-		println!(\"Hello, World!\");\n\
-	}" > Templates/PROGRAMMING/R/rust.rs
+	println!(\"Hello, World!\");\n\
+}" > Templates/PROGRAMMING/R/rust.rs
 
 printf "GENERATING SWIFT TEMPLATE\n"
 printf "print(\"Hello, World!\")" > Templates/PROGRAMMING/S/swift.swift
@@ -165,27 +165,27 @@ touch Templates/DOCUMENTS/LIBRE/{calc.ods,draw.odg,impress.odp,math.odf,writer.o
 
 printf "GENERATING DESKTOP FILE\n"
 printf "[Desktop Entry]\n\
-	Version=1.0\n\
-	Type=Application\n\
-	Name=labelyourapp\n\
-	Comment=shortdescriptionhere\n\
-	Exec=appnamehere\n\
-	Icon=/path/to/file\n\
-	Path=\n\
-	Terminal=true/false\n\
-	StartupNotify=true/false" > Templates/DOCUMENTS/OTHER/desktop.desktop
+Version=1.0\n\
+Type=Application\n\
+Name=labelyourapp\n\
+Comment=shortdescriptionhere\n\
+Exec=appnamehere\n\
+Icon=/path/to/file\n\
+Path=\n\
+Terminal=true/false\n\
+StartupNotify=true/false" > Templates/DOCUMENTS/OTHER/desktop.desktop
 
 printf "GENERATING LUA TEMPLATE\n"
 printf "print('Hello, World!')" > Templates/SCRIPTING/L/lua.lua
 
 printf "GENERATING PYTHON TEMPLATE\n"
 printf "#!/usr/bin/env python\n\
-	print \"Hello, World\"" > Templates/SCRIPTING/P/python.py
+print \"Hello, World\"" > Templates/SCRIPTING/P/python.py
 
 printf "GENERATING VARIOUS SHELL SCRIPT TEMPLATES\n"
 
 printf "#!/bin/bash\n\
-	printf 'Hello, World!\n'" > Templates/SCRIPTING/SHELL/bash.sh
+printf 'Hello, World!\n'" > Templates/SCRIPTING/SHELL/bash.sh
 
 printf "#!/bin/dash\n\
 	echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/dash.sh
@@ -205,29 +205,28 @@ printf "#!/bin/zsh\n\
 # WEB
 printf "GENERATING EMPTY CSS FILE\n"
 printf ".class {\n\n\
-        }\n\n\
-	#id {\n\n\
-	}" > Templates/WEB/css.css
+}\n\n\
+#id {\n\n\
+}" > Templates/WEB/css.css
 
 printf "GENERATING HTML TEMPLATE\n"
 printf "<html>\n\
-	  <head>\n\
-	  </head>\n\n\
-	  <body>\n\
-	    <script src='Documents/web/html'>\n\
-	    </script>\n\
-	    <p>\n\
-	    </p>\n\
-	  </body>\n\
-	</html>" > Templates/WEB/html.html
+	<head>\n\
+	</head>\n\n\
+	<body>\n\
+		<script src='Documents/web/html' />\n\
+		<p>\n\
+		</p>\n\
+	</body>\n\
+</html>" > Templates/WEB/html.html
 
 printf "GENERATING JAVASCRIPT TEMPLATE\n"
 printf "alert(\"Hello, world! I am a separate file.\");" > Templates/WEB/javascript.js
 
 printf "GENERATING PHP TEMPLATE\n"
 printf "<?php\n\
-	  print(\"Hello, World!\")\n\
-	?>" > Templates/WEB/php.php
+	print(\"Hello, World!\")\n\
+?>" > Templates/WEB/php.php
 
 # VIDEOS
 mkdir -p Videos/{mp4,ogv,webm}
