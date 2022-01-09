@@ -8,36 +8,56 @@
 # PLEASE DO NOT EDIT ALREADY EXISTING SECTIONS 
 # UNLESS ABSOLUTELY NECESSARY. 
 
+# REFERENCE CODE
+# echo -e "\e[1;41m USE THIS LINE IF THERE IS EVER AN ISSUE WITH A BLOCK OF CODE \e[0m"
+
+# Check Mark Symbol "${tCYAN}☑${tNC}"
+# X Mark Symbol "${tRED} ☒ ${NC}"
+
+tRED='\033[1;31m'
+tCYAN='\033[1;36m'
+NC='\033[0m' # No Color
+
+bRED='\033[1;41m' # ${bRED}
+
+EKO='echo -e' # ${EKO}
+
 echo "GENERATING FILE CABINET"
 
 if [ ! -d Desktop ]; then
 	mkdir Desktop
+	${EKO} "'Desktop' generated ${tCYAN}☑${NC} "
 fi
 
 # Create the Documents directory along with subdirectories
 if [ ! -d Documents ]; then
 	mkdir -p Documents/{dev/{programming/{ada,apl,assembly,basic,c,cobol,cpp,d,forth,fsharp,go,haskell,java,pascal,ocaml,prolog,r,ruby,rust,swift},scripting/{lua,python,shell/{bash,dash,fish,ion,nu,zsh}},web/html/{css,javascript,media/{audio/{flac,mp3,ogg},photo/{gif,jpeg,png,svg},video/{mp4,ogv,webm}},php}},office/{calc,draw,impress,math,writer}}
+	${EKO} "'Documents' generated ${tCYAN}☑${NC}"
 fi
 
 # DOWNLOADS
 if [ ! -d Downloads ]; then
 	mkdir -p Downloads/{7zip,appimg,iso,other,package/{apk,deb,eopkg,rpm,tgz,txz,xbps,xz,zst},tarball,winexe,zip}
+	${EKO} "'Downloads' generated ${tCYAN}☑${NC}"
 fi
 
 # MUSIC
 # You will need to create directories for each band or artist yourself. We don't know who you listen to or what file format you may download as.  
 if [ ! -d Music ]; then
 	mkdir -p Music/{aup,flac,mp3,ogg}
+	${EKO} "'Music' generated ${tCYAN}☑${NC}"
 fi
 
 # PICTURES
 if [ ! -d Pictures ]; then
 	mkdir -p Pictures/{gif,jpeg,png/screenshot,svg,wallpapers,xcf}
+	${EKO} "'Pictures' generated ${tCYAN}☑${NC}"
 fi
 
 # TEMPLATES
 if [ ! -d Templates ]; then
 	mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,B,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
+	${EKO} "'Templates' generated ${tCYAN}☑${NC}"
 fi
 
 printf "WRITING TEMPLATES\n"
@@ -72,7 +92,7 @@ section .rodata\n\
 #printf "GENERATING BASIC TEMPLATE\n"				# |OUTPUT ISSUE. NEEDS	|
 #printf "10 REM Hello World in BASIC				# |TWEAKING.		|
 #20 PRINT "Hello World!"" > Templates/PROGRAMMING/B/basic.bas	# |			|
-echo -e "\e[1;41mBASIC TEMPLATE IS IGNORED DUE TO OUTPUT ISSUES. NEEDS TWEAKING. \e[0m"
+${EKO} "${bRED}BASIC TEMPLATE IS IGNORED DUE TO OUTPUT ISSUES. NEEDS TWEAKING.${NC}"
 
 printf "GENERATING C TEMPLATE\n"
 printf "#include <stdio.h>\n\n\
@@ -129,8 +149,10 @@ printf "class HelloWorld {\n\
 	}\n\
 }" > Templates/PROGRAMMING/J/java.jar
 
-printf "GENERATING OCAML TEMPLATE\n"
-printf "print_string \"Hello World\n\"" > Templates/PROGRAMMING/O/oca.ml
+#printf "GENERATING OCAML TEMPLATE\n"
+#printf "print_string \"Hello World\n\"" > Templates/PROGRAMMING/O/oca.ml
+${EKO} "${bRED}OCAML TEMPLATE IS IGNORED DUE TO OUTPUT ISSUES. NEEDS TWEAKING.${NC}"
+
 
 printf "GENERATING PASCAL TEMPLATE\n"
 printf "program Hello;
@@ -232,6 +254,8 @@ printf "<?php\n\
 ?>" > Templates/WEB/php.php
 
 # VIDEOS
-mkdir -p Videos/{mp4,ogv,webm}
+if [ ! -d Videos ]; then
+	mkdir -p Videos/{mp4,ogv,webm}
+fi
 
 printf "GENERATION COMPLETE\n"
