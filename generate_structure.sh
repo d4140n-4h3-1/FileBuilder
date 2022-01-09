@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # SETUP
-# AUTHOR: Dalton "Joey" Hill
+# AUTHOR: Dalton "Joey" Hill (USER d4140n-4h3-1)
+# CONTRIBUTORS: USER Phate6660, 
 # This file generates directories and other files 
 # for the convenience of developers and students.
+
+# PLEASE DO NOT EDIT ALREADY EXISTING SECTIONS 
+# UNLESS ABSOLUTELY NECESSARY. 
 
 echo "GENERATING FILE CABINET"
 
@@ -10,27 +14,14 @@ if [ ! -d Desktop ]; then
 	mkdir Desktop
 fi
 
-# DOCUMENTS
-# Create the Documents directory along with the subdirectories.
+# Create the Documents directory along with subdirectories
 if [ ! -d Documents ]; then
-	mkdir -p Documents/office/{calc,draw,impress,math,writer}
-fi
-# Create the programming directory along with the subdirectories.
-if [ ! -d programming ]; then
-	mkdir -p programming/{assembly,c,cpp,d,forth,go,haskell,ruby,rust}
-fi
-# Create the scripting directory along with the subdirectories.
-if [ ! -d scripting ]; then
-	mkdir -p scripting/{lua,python,shell/{bash,dash,fish,zsh}}
-fi
-# Create the web directory along with the subdirectories.
-if [ ! -d web ]; then
-mkdir -p web/html/{css,html,javascript,media/{audio/{flac,mp3,ogg},photo/{gif,jpeg,png,svg},video/{mp4,ogv,webm}},php}
+	mkdir -p Documents/{dev/{programming/{ada,apl,assembly,basic,c,cobol,cpp,d,forth,fsharp,go,haskell,java,pascal,ocaml,prolog,r,ruby,rust,swift},scripting/{lua,python,shell/{bash,dash,fish,ion,nu,zsh}},web/html/{css,javascript,media/{audio/{flac,mp3,ogg},photo/{gif,jpeg,png,svg},video/{mp4,ogv,webm}},php}},office/{calc,draw,impress,math,writer}}
 fi
 
 # DOWNLOADS
 if [ ! -d Downloads ]; then
-	mkdir -p Downloads/{7zip,iso,other,tarball,zip}
+	mkdir -p Downloads/{7zip,appimg,iso,other,package/{apk,deb,eopkg,rpm,tgz,txz,xbps,xz,zst},tarball,winexe,zip}
 fi
 
 # MUSIC
@@ -78,9 +69,10 @@ section .rodata\n\
 	msg: db 'Hello, World!', 10\n\
 	msglen: equ $ - msg" > Templates/PROGRAMMING/A/assembly-n.asm
 	
-printf "GENERATING BASIC TEMPLATE\n"
-printf "10 REM Hello World in BASIC
-20 PRINT "Hello World"" > Templates/PROGRAMMING/B/basic.bas
+#printf "GENERATING BASIC TEMPLATE\n"				# |OUTPUT ISSUE. NEEDS	|
+#printf "10 REM Hello World in BASIC				# |TWEAKING.		|
+#20 PRINT "Hello World!"" > Templates/PROGRAMMING/B/basic.bas	# |			|
+echo -e "\e[1;41mBASIC TEMPLATE IS IGNORED DUE TO OUTPUT ISSUES. NEEDS TWEAKING. \e[0m"
 
 printf "GENERATING C TEMPLATE\n"
 printf "#include <stdio.h>\n\n\
@@ -226,6 +218,7 @@ printf "<html>\n\
 	<body>\n\
 		<script src='Documents/web/html' />\n\
 		<p>\n\
+		Hello, World! I am an HTML file.
 		</p>\n\
 	</body>\n\
 </html>" > Templates/WEB/html.html
