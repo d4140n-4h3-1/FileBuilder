@@ -18,3 +18,5 @@ Some major changes have been made.
 ## Issues
 
 The permanent issue is there is always room for new templates under Line 71, whether it's a script, program, or even a configuration file. 
+
+Any scripting languages (such as Go) that can be compiled directly into binaries should take their place in **Templates/PROGRAMMING**. 
