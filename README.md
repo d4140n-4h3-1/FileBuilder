@@ -4,15 +4,13 @@ This is essential for creating an organized file structure for developers and st
 
 Templates will be especially useful for quick file creation. 
 
+* Credits to contributors are listed as "USER _username_ ,", or "_first last_ (USER _username_)" if they so choose. 
+
 ## Updates
 
 Some major changes have been made. 
 
-* Credits to contributors are listed as "USER _username_ ,", or "_first last_ (USER _username_)" if they so choose. 
-* New directories have been added. 
-* Directories **programming**, **scripting** and **web** have been moved inside **Documents/dev/**
 * Shortcuts have been added. **${KEYWORD}** has been provided for better readability and to shorten some text. 
-* Sections **basic.bas** and **oca.ml** have been fixed. They should be generated as intended
 * The overall file is now more readable via XML after a several tweaks. 
 * All remaining **echo**s have been replaced with **printf** as **printf** is guaranteed to be built within shells.
 * **mkdir -p** has been shortened to **${MDR}**
