@@ -12,9 +12,9 @@ Some major changes have been made.
 * New directories have been added. 
 * Directories **programming**, **scripting** and **web** have been moved inside **Documents/dev/**
 * Shortcuts have been added. **${KEYWORD}** has been provided for better readability and to shorten some text. 
+* Sections **basic.bas** and **oca.ml** have been fixed. They should be generated as intended
+* The overall file is now more readable via XML after a several tweaks. 
 
 ## Issues
 
-The sections of code intended to write **basic.bas** and **oca.ml** has been temporarily ignored due to output issues. A work-around is required. 
-
-The permanent issue is there is always room for new templates under Line 43, whether it's a script, program, or even a configuration file. 
+The permanent issue is there is always room for new templates under Line 71, whether it's a script, program, or even a configuration file. 
