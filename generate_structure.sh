@@ -11,14 +11,13 @@
 # REFERENCE CODE
 # echo -e "\e[1;41m USE THIS LINE IF THERE IS EVER AN ISSUE WITH A BLOCK OF CODE \e[0m"
 
-# Check Mark Symbol "${tCYAN}☑${tNC}"
+# Check Mark Symbol "${tCYAN}☑${NC}"
 # X Mark Symbol "${tRED} ☒ ${NC}"
 
-tRED='\033[1;31m'
-tCYAN='\033[1;36m'
-NC='\033[0m' # No Color
-
+tRED='\033[1;31m' # ${tRED}
 bRED='\033[1;41m' # ${bRED}
+tCYAN='\033[1;36m' # ${tCYAN}
+NC='\033[0m' # ${NC} , No Color
 
 EKO='echo -e' # ${EKO}
 
@@ -60,6 +59,12 @@ if [ ! -d Templates ]; then
 	${EKO} "'Templates' generated ${tCYAN}☑${NC}"
 fi
 
+# VIDEOS
+if [ ! -d Videos ]; then
+	mkdir -p Videos/{mp4,ogv,webm}
+	${EKO} "'Videos' generated ${tCYAN}☑${NC}"
+fi
+
 printf "WRITING TEMPLATES\n"
 
 printf "GENERATING ADA TEMPLATE\n"
@@ -89,93 +94,90 @@ section .rodata\n\
 	msg: db 'Hello, World!', 10\n\
 	msglen: equ $ - msg" > Templates/PROGRAMMING/A/assembly-n.asm
 	
-#printf "GENERATING BASIC TEMPLATE\n"				# |OUTPUT ISSUE. NEEDS	|
-#printf "10 REM Hello World in BASIC				# |TWEAKING.		|
-#20 PRINT "Hello World!"" > Templates/PROGRAMMING/B/basic.bas	# |			|
-${EKO} "${bRED}BASIC TEMPLATE IS IGNORED DUE TO OUTPUT ISSUES. NEEDS TWEAKING.${NC}"
+printf "GENERATING BASIC TEMPLATE\n"
+printf '10 REM Hello World in BASIC
+20 PRINT "Hello World!"' > Templates/PROGRAMMING/B/basic.bas
 
 printf "GENERATING C TEMPLATE\n"
-printf "#include <stdio.h>\n\n\
-int main() {\n\
-	printf(\"Hello World!\");\n\
-	return 0;\n\
-}" > Templates/PROGRAMMING/C/c.c
+printf '#include <stdio.h>\n
+int main() {
+	printf("Hello World!");
+	return 0;
+}' > Templates/PROGRAMMING/C/c.c
 
 printf "GENERATING C++ FILE\n"
-printf "#include <iostream>\n\n\
-int main() {\n\
-	std::cout << \"Hello, World!\" << std::endl;\n\
-	return 0;\n\
-}" > Templates/PROGRAMMING/C/cpp.cpp
+printf '#include <iostream>\n
+int main() {
+	std::cout << "Hello, World!" << std::endl;
+	return 0;
+}' > Templates/PROGRAMMING/C/cpp.cpp
 
 printf "GENERATING COBOL TEMPLATE\n"
-printf "IDENTIFICATION DIVISION.\n\
-PROGRAM-ID. IDSAMPLE.\n\
-ENVIRONMENT DIVISION.\n\
-PROCEDURE DIVISION.\n\
-	DISPLAY \"HELLO WORLD\".\n\
-	STOP RUN." > Templates/PROGRAMMING/C/cobol.cbl
+printf 'IDENTIFICATION DIVISION.
+PROGRAM-ID. IDSAMPLE.
+ENVIRONMENT DIVISION.
+PROCEDURE DIVISION.
+	DISPLAY "HELLO WORLD".
+	STOP RUN.' > Templates/PROGRAMMING/C/cobol.cbl
 
 printf "GENERATING D TEMPLATE\n"
-printf "import std.stdio;\n\n\
-void main() {\n\
-	writefln(\"Hello, World!\");\n\
-}" > Templates/PROGRAMMING/D/d.d
+printf 'import std.stdio;\n
+void main() {
+	writefln(\"Hello, World!\");
+}' > Templates/PROGRAMMING/D/d.d
 
 printf "GENERATING FORTH TEMPLATE\n"
-printf " : HELLO  ( -- )  CR .\" Hello, World!\" ;\n" > Templates/PROGRAMMING/F/forth.fth
+printf ' : HELLO  ( -- )  CR ." Hello, World!\" ;' > Templates/PROGRAMMING/F/forth.fth
 
 printf "GENERATING F# TEMPLATE\n"
-printf "[<EntryPoint>]\n\
-let main argv =\n\
-	printfn \"Hello, World!\"\n\
-	0" > Templates/PROGRAMMING/F/fsharp.fs
+printf '[<EntryPoint>]\n
+let main argv =
+	printfn "Hello, World!"
+	0' > Templates/PROGRAMMING/F/fsharp.fs
 
 printf "GENERATING GO TEMPLATE\n"
-printf "package main\n\n\
-import 'fmt'\n\n\
-func main() {\n\
-	fmt.Println(\"Hello, World!\")\n\
-}" > Templates/PROGRAMMING/G/golang.go
+printf 'package main\n
+import "fmt"
+func main() {
+	fmt.Println("Hello, World!")
+}' > Templates/PROGRAMMING/G/golang.go
 
 printf "GENERATING HASKELL TEMPLATE\n"
-printf "main :: IO ()\n\
-main = putStrLn \"Hello, World!\"" > Templates/PROGRAMMING/H/haskell.hs
+printf 'main :: IO ()\n
+main = putStrLn "Hello, World!"' > Templates/PROGRAMMING/H/haskell.hs
 
 printf "GENERATING JAVA TEMPLATE\n"
-printf "class HelloWorld {\n\
-	public static void main(String[] args) {\n\
-		System.out.println(\"Hello, World!\");\n\
-	}\n\
-}" > Templates/PROGRAMMING/J/java.jar
+printf 'class HelloWorld {
+	public static void main(String[] args) {
+		System.out.println("Hello, World!");
+	}
+}' > Templates/PROGRAMMING/J/java.jar
 
-#printf "GENERATING OCAML TEMPLATE\n"
-#printf "print_string \"Hello World\n\"" > Templates/PROGRAMMING/O/oca.ml
-${EKO} "${bRED}OCAML TEMPLATE IS IGNORED DUE TO OUTPUT ISSUES. NEEDS TWEAKING.${NC}"
-
+printf "GENERATING OCAML TEMPLATE\n"
+printf 'print_string "Hello World"' > Templates/PROGRAMMING/O/oca.ml
 
 printf "GENERATING PASCAL TEMPLATE\n"
-printf "program Hello;
+printf "program Hello;\n
 begin
 	writeIn ('Hello, World!');
 end" > Templates/PROGRAMMING/P/pascal.p
 
 printf "GENERATING PROLOG TEMPLATE\n"
-printf "write(\"Hello, World!\")." > Templates/PROGRAMMING/P/prolog.pro
+printf 'write("Hello, World!").' > Templates/PROGRAMMING/P/prolog.pro
 
 printf "GENERATING R TEMPLATE\n"
-printf "print(\"Hello World!\", quote=FALSE)" > Templates/PROGRAMMING/R/r.r
+printf 'print("Hello World!", quote=FALSE)' > Templates/PROGRAMMING/R/r.r
 
 printf "GENERATING RUBY TEMPLATE\n"
-printf "puts \"Hello, World!\"" > Templates/PROGRAMMING/R/ruby.rb
+printf 'puts "Hello, World!"' > Templates/PROGRAMMING/R/ruby.rb
 
 printf "GENERATING RUST TEMPLATE\n"
-printf "fn main() {\n\
-	println!(\"Hello, World!\");\n\
-}" > Templates/PROGRAMMING/R/rust.rs
+printf 'fn main() {
+	println!("Hello, World!");
+}' > Templates/PROGRAMMING/R/rust.rs
 
 printf "GENERATING SWIFT TEMPLATE\n"
-printf "print(\"Hello, World!\")" > Templates/PROGRAMMING/S/swift.swift
+printf 'print("Hello, World!")' > Templates/PROGRAMMING/S/swift.swift
 
 
 # CONFIGURATION DIRECTORY
@@ -203,28 +205,28 @@ printf "GENERATING LUA TEMPLATE\n"
 printf "print('Hello, World!')" > Templates/SCRIPTING/L/lua.lua
 
 printf "GENERATING PYTHON TEMPLATE\n"
-printf "#!/usr/bin/env python\n\
-print \"Hello, World\"" > Templates/SCRIPTING/P/python.py
+printf '!/usr/bin/env python
+print "Hello, World"'> Templates/SCRIPTING/P/python.py
 
 printf "GENERATING VARIOUS SHELL SCRIPT TEMPLATES\n"
 
 printf "#!/bin/bash\n\
-printf 'Hello, World!\n'" > Templates/SCRIPTING/SHELL/bash.sh
+echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/bash.sh
 
 printf "#!/bin/dash\n\
-	echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/dash.sh
+echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/dash.sh
 
 printf "#!/bin/fish\n\
-	echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/fish.sh
+echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/fish.sh
 
 printf "#!/bin/ion\n\
-	echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/ion.sh
+echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/ion.sh
 
 printf "#!/bin/nu\n\
-	echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/nu.sh
+echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/nu.sh
 
 printf "#!/bin/zsh\n\
-	echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/z.sh
+echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/z.sh
 
 # WEB
 printf "GENERATING EMPTY CSS FILE\n"
@@ -246,16 +248,11 @@ printf "<html>\n\
 </html>" > Templates/WEB/html.html
 
 printf "GENERATING JAVASCRIPT TEMPLATE\n"
-printf "alert(\"Hello, world! I am a separate file.\");" > Templates/WEB/javascript.js
+printf 'alert("Hello, world! I am a separate file.");' > Templates/WEB/javascript.js
 
 printf "GENERATING PHP TEMPLATE\n"
-printf "<?php\n\
-	print(\"Hello, World!\")\n\
-?>" > Templates/WEB/php.php
-
-# VIDEOS
-if [ ! -d Videos ]; then
-	mkdir -p Videos/{mp4,ogv,webm}
-fi
+printf '?php
+	print(\"Hello, World!\")
+?>'> Templates/WEB/php.php
 
 printf "GENERATION COMPLETE\n"
