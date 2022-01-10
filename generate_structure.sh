@@ -13,56 +13,62 @@
 
 # Check Mark Symbol "${tCYAN}☑${NC}"
 # X Mark Symbol "${tRED} ☒ ${NC}"
+# 
 
 tRED='\033[1;31m' # ${tRED}
 bRED='\033[1;41m' # ${bRED}
 tCYAN='\033[1;36m' # ${tCYAN}
 NC='\033[0m' # ${NC} , No Color
 
-EKO='echo -e' # ${EKO}
+MDR='mkdir -p' # ${MDR}
 
-echo "GENERATING FILE CABINET"
+printf "GENERATING FILE CABINET\n"
+
+TP='Templates/PROGRAMMING' # ${TP}
+TS='Templates/SCRIPTING' # ${TS}
+TSS='Templates/SCRIPTING/SHELL' # ${TSS}
+TW='Templates/WEB' #{TW}
 
 if [ ! -d Desktop ]; then
 	mkdir Desktop
-	${EKO} "'Desktop' generated ${tCYAN}☑${NC} "
+	printf "'Desktop' generated ${tCYAN}☑${NC}\n"
 fi
 
 # Create the Documents directory along with subdirectories
 if [ ! -d Documents ]; then
-	mkdir -p Documents/{dev/{programming/{ada,apl,assembly,basic,c,cobol,cpp,d,forth,fsharp,go,haskell,java,pascal,ocaml,prolog,r,ruby,rust,swift},scripting/{lua,python,shell/{bash,dash,fish,ion,nu,zsh}},web/html/{css,javascript,media/{audio/{flac,mp3,ogg},photo/{gif,jpeg,png,svg},video/{mp4,ogv,webm}},php}},office/{calc,draw,impress,math,writer}}
-	${EKO} "'Documents' generated ${tCYAN}☑${NC}"
+	${MDR} Documents/{dev/{programming/{ada,apl,assembly,basic,c,cobol,cpp,d,forth,fsharp,go,haskell,java,pascal,ocaml,prolog,r,ruby,rust,swift},scripting/{lua,python,shell/{bash,dash,fish,ion,nu,zsh}},web/html/{css,javascript,media/{audio/{flac,mp3,ogg},photo/{gif,jpeg,png,svg},video/{mp4,ogv,webm}},php}},office/{calc,draw,impress,math,writer}}
+	printf "'Documents' generated ${tCYAN}☑${NC}\n"
 fi
 
 # DOWNLOADS
 if [ ! -d Downloads ]; then
-	mkdir -p Downloads/{7zip,appimg,iso,other,package/{apk,deb,eopkg,rpm,tgz,txz,xbps,xz,zst},tarball,winexe,zip}
-	${EKO} "'Downloads' generated ${tCYAN}☑${NC}"
+	${MDR} Downloads/{7zip,appimg,iso,other,package/{apk,deb,eopkg,rpm,tgz,txz,xbps,xz,zst},tarball,winexe,zip}
+	printf "'Downloads' generated ${tCYAN}☑${NC}\n"
 fi
 
 # MUSIC
 # You will need to create directories for each band or artist yourself. We don't know who you listen to or what file format you may download as.  
 if [ ! -d Music ]; then
-	mkdir -p Music/{aup,flac,mp3,ogg}
-	${EKO} "'Music' generated ${tCYAN}☑${NC}"
+	${MDR} Music/{aup,flac,mp3,ogg}
+	printf "'Music' generated ${tCYAN}☑${NC}\n"
 fi
 
 # PICTURES
 if [ ! -d Pictures ]; then
-	mkdir -p Pictures/{gif,jpeg,png/screenshot,svg,wallpapers,xcf}
-	${EKO} "'Pictures' generated ${tCYAN}☑${NC}"
+	${MDR} Pictures/{gif,jpeg,png/screenshot,svg,wallpapers,xcf}
+	printf "'Pictures' generated ${tCYAN}☑${NC}\n"
 fi
 
 # TEMPLATES
 if [ ! -d Templates ]; then
-	mkdir -p Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,B,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
-	${EKO} "'Templates' generated ${tCYAN}☑${NC}"
+	${MDR} Templates/{CONFIGURATION,DOCUMENTS/{LIBRE,OTHER},PROGRAMMING/{A,B,C,D,F,G,H,J,O,P,R,S},SCRIPTING/{L,P,SHELL},WEB}
+	printf "'Templates' generated ${tCYAN}☑${NC}\n"
 fi
 
 # VIDEOS
 if [ ! -d Videos ]; then
-	mkdir -p Videos/{mp4,ogv,webm}
-	${EKO} "'Videos' generated ${tCYAN}☑${NC}"
+	${MDR} Videos/{mp4,ogv,webm}
+	printf "'Videos' generated ${tCYAN}☑${NC}\n"
 fi
 
 printf "WRITING TEMPLATES\n"
@@ -72,10 +78,10 @@ printf "Text_IO;\n\n\
 procedure Hello_World is\n\
 begin\n\
 	Ada.Text_IO.Put_Line ('Hello, World!');\n\
-end Hello_World;\n" > Templates/PROGRAMMING/A/ada.adb
+end Hello_World;\n" > ${TP}/A/ada.adb
 
 printf "GENERATING APL TEMPLATE\n"
-printf "[]<-'Hello World!'\n" > Templates/PROGRAMMING/A/apl.apl
+printf "[]<-'Hello World!'\n" > ${TP}/A/apl.apl
 
 printf "GENERATING ASSEMBLY TEMPLATE FOR NASM\n"
 printf "global _start\n\n\
@@ -92,25 +98,25 @@ _start:
 	syscall		; );\n\
 section .rodata\n\
 	msg: db 'Hello, World!', 10\n\
-	msglen: equ $ - msg" > Templates/PROGRAMMING/A/assembly-n.asm
+	msglen: equ $ - msg" > ${TP}/A/assembly-n.asm
 	
 printf "GENERATING BASIC TEMPLATE\n"
 printf '10 REM Hello World in BASIC
-20 PRINT "Hello World!"' > Templates/PROGRAMMING/B/basic.bas
+20 PRINT "Hello World!"' > ${TP}/B/basic.bas
 
 printf "GENERATING C TEMPLATE\n"
 printf '#include <stdio.h>\n
 int main() {
 	printf("Hello World!");
 	return 0;
-}' > Templates/PROGRAMMING/C/c.c
+}' > ${TP}/C/c.c
 
 printf "GENERATING C++ FILE\n"
 printf '#include <iostream>\n
 int main() {
 	std::cout << "Hello, World!" << std::endl;
 	return 0;
-}' > Templates/PROGRAMMING/C/cpp.cpp
+}' > ${TP}/cpp.cpp
 
 printf "GENERATING COBOL TEMPLATE\n"
 printf 'IDENTIFICATION DIVISION.
@@ -118,66 +124,66 @@ PROGRAM-ID. IDSAMPLE.
 ENVIRONMENT DIVISION.
 PROCEDURE DIVISION.
 	DISPLAY "HELLO WORLD".
-	STOP RUN.' > Templates/PROGRAMMING/C/cobol.cbl
+	STOP RUN.' > ${TP}/C/cobol.cbl
 
 printf "GENERATING D TEMPLATE\n"
 printf 'import std.stdio;\n
 void main() {
 	writefln(\"Hello, World!\");
-}' > Templates/PROGRAMMING/D/d.d
+}' > ${TP}/D/d.d
 
 printf "GENERATING FORTH TEMPLATE\n"
-printf ' : HELLO  ( -- )  CR ." Hello, World!\" ;' > Templates/PROGRAMMING/F/forth.fth
+printf ' : HELLO  ( -- )  CR ." Hello, World!\" ;' > ${TP}/F/forth.fth
 
 printf "GENERATING F# TEMPLATE\n"
 printf '[<EntryPoint>]\n
 let main argv =
 	printfn "Hello, World!"
-	0' > Templates/PROGRAMMING/F/fsharp.fs
+	0' > ${TP}/F/fsharp.fs
 
 printf "GENERATING GO TEMPLATE\n"
 printf 'package main\n
 import "fmt"
 func main() {
 	fmt.Println("Hello, World!")
-}' > Templates/PROGRAMMING/G/golang.go
+}' > ${TP}/G/golang.go
 
 printf "GENERATING HASKELL TEMPLATE\n"
 printf 'main :: IO ()\n
-main = putStrLn "Hello, World!"' > Templates/PROGRAMMING/H/haskell.hs
+main = putStrLn "Hello, World!"' > ${TP}/H/haskell.hs
 
 printf "GENERATING JAVA TEMPLATE\n"
 printf 'class HelloWorld {
 	public static void main(String[] args) {
 		System.out.println("Hello, World!");
 	}
-}' > Templates/PROGRAMMING/J/java.jar
+}' > ${TP}/J/java.jar
 
 printf "GENERATING OCAML TEMPLATE\n"
-printf 'print_string "Hello World"' > Templates/PROGRAMMING/O/oca.ml
+printf 'print_string "Hello World"' > ${TP}/O/oca.ml
 
 printf "GENERATING PASCAL TEMPLATE\n"
 printf "program Hello;\n
 begin
 	writeIn ('Hello, World!');
-end" > Templates/PROGRAMMING/P/pascal.p
+end" > ${TP}/P/pascal.p
 
 printf "GENERATING PROLOG TEMPLATE\n"
-printf 'write("Hello, World!").' > Templates/PROGRAMMING/P/prolog.pro
+printf 'write("Hello, World!").' > ${TP}/P/prolog.pro
 
 printf "GENERATING R TEMPLATE\n"
-printf 'print("Hello World!", quote=FALSE)' > Templates/PROGRAMMING/R/r.r
+printf 'print("Hello World!", quote=FALSE)' > ${TP}/R/r.r
 
 printf "GENERATING RUBY TEMPLATE\n"
-printf 'puts "Hello, World!"' > Templates/PROGRAMMING/R/ruby.rb
+printf 'puts "Hello, World!"' > ${TP}/R/ruby.rb
 
 printf "GENERATING RUST TEMPLATE\n"
 printf 'fn main() {
 	println!("Hello, World!");
-}' > Templates/PROGRAMMING/R/rust.rs
+}' > ${TP}/R/rust.rs
 
 printf "GENERATING SWIFT TEMPLATE\n"
-printf 'print("Hello, World!")' > Templates/PROGRAMMING/S/swift.swift
+printf 'print("Hello, World!")' > ${TP}/S/swift.swift
 
 
 # CONFIGURATION DIRECTORY
@@ -202,38 +208,38 @@ Terminal=true/false\n\
 StartupNotify=true/false" > Templates/DOCUMENTS/OTHER/desktop.desktop
 
 printf "GENERATING LUA TEMPLATE\n"
-printf "print('Hello, World!')" > Templates/SCRIPTING/L/lua.lua
+printf "print('Hello, World!')" > ${TS}/L/lua.lua
 
 printf "GENERATING PYTHON TEMPLATE\n"
 printf '!/usr/bin/env python
-print "Hello, World"'> Templates/SCRIPTING/P/python.py
+print "Hello, World"'> ${TS}/P/python.py
 
 printf "GENERATING VARIOUS SHELL SCRIPT TEMPLATES\n"
 
 printf "#!/bin/bash\n\
-echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/bash.sh
+printf 'Hello, World!'\n" > ${TSS}/bash.sh
 
 printf "#!/bin/dash\n\
-echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/dash.sh
+printf 'Hello, World!'\n" > ${TSS}/dash.sh
 
 printf "#!/bin/fish\n\
-echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/fish.sh
+printf 'Hello, World!'\n" > ${TSS}/fish.sh
 
 printf "#!/bin/ion\n\
-echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/ion.sh
+printf 'Hello, World!'\n" > ${TSS}/ion.sh
 
 printf "#!/bin/nu\n\
-echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/nu.sh
+printf 'Hello, World!'\n" > ${TSS}/nu.sh
 
 printf "#!/bin/zsh\n\
-echo 'Hello, World!'" > Templates/SCRIPTING/SHELL/z.sh
+printf 'Hello, World!'\n" > ${TSS}/z.sh
 
 # WEB
 printf "GENERATING EMPTY CSS FILE\n"
 printf ".class {\n\n\
 }\n\n\
 #id {\n\n\
-}" > Templates/WEB/css.css
+}" > ${TW}/css.css
 
 printf "GENERATING HTML TEMPLATE\n"
 printf "<html>\n\
@@ -245,14 +251,14 @@ printf "<html>\n\
 		Hello, World! I am an HTML file.
 		</p>\n\
 	</body>\n\
-</html>" > Templates/WEB/html.html
+</html>" > ${TW}/html.html
 
 printf "GENERATING JAVASCRIPT TEMPLATE\n"
-printf 'alert("Hello, world! I am a separate file.");' > Templates/WEB/javascript.js
+printf 'alert("Hello, world! I am a separate file.");' > ${TW}/javascript.js
 
 printf "GENERATING PHP TEMPLATE\n"
 printf '?php
 	print(\"Hello, World!\")
-?>'> Templates/WEB/php.php
+?>'> ${TW}/php.php
 
 printf "GENERATION COMPLETE\n"
