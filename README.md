@@ -14,6 +14,9 @@ Some major changes have been made.
 * Shortcuts have been added. **${KEYWORD}** has been provided for better readability and to shorten some text. 
 * Sections **basic.bas** and **oca.ml** have been fixed. They should be generated as intended
 * The overall file is now more readable via XML after a several tweaks. 
+* All remaining **echo**s have been replaced with **printf** as **printf** is guaranteed to be built within shells.
+* **mkdir -p** has been shortened to **${MDR}**
+* **Templates/PROGRAMMING**, **Templates/SCRIPTING**, **Templates/SCRIPTING/SHELL** and **Templates/WEB** have been shortened to **${TP}**, **${TS**}, **${TSS}** and **${TW}**
 
 ## Issues
 
